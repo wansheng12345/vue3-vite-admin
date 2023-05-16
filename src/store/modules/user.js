@@ -1,4 +1,5 @@
-import { login, logout, getInfo } from '@/api/login'
+
+import API from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import defAva from '@/assets/images/profile.jpg'
 
@@ -15,19 +16,18 @@ const useUserStore = defineStore(
     actions: {
       // 登录
       login(userInfo) {
-        console.log('login');
-        const username = userInfo.username.trim()
-        const password = userInfo.password
         return new Promise((resolve, reject) => {
-          // login(username, password).then(res => {
           let data = {
             code: 200,
             msg: "操作成功",
             access_token: 'eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjBjOGQyZTI2LTkyOTAtNDYyZC04YzRhLTM4YjM5M2YzZGQ0NCJ9.Z_1IvvBNz3gPYjOJ2f03A1x0GZWQVJGGdOpZ8UminbTlO75CroDN_1YLumAO1r9lz-mrEOJeLf__m3Jj-1Aw4A',
           }
+          resolve(data)
           setToken(data.access_token)
           this.token = data.access_token
-          resolve()
+          // API.login(userInfo).then(res => {
+          //   sessionStorage.setItem('token',"bearer "+res.data.access_token)
+          //   resolve()
           // }).catch(error => {
           //   reject(error)
           // })

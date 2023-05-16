@@ -1,6 +1,6 @@
 import auth from '@/plugins/auth'
 import router, { constantRoutes, dynamicRoutes } from '@/router'
-import { getRouters } from '@/api/login'
+// import { getRouters } from '@/api/login'
 import Layout from '@/layout/index'
 import ParentView from '@/components/ParentView'
 import InnerLink from '@/layout/components/InnerLink'
@@ -150,6 +150,36 @@ const usePermissionStore = defineStore(
                 },
                 name: 'HealthManagement',
                 path: "/HealthManagement",
+                redirect: 'noRedirect' 
+              },
+              {
+                alwaysShow: true,
+                component: "Layout",
+                hidden: false,
+                children: [
+                  {
+                    component: "Element/map/index",
+                    hidden: false,
+                    meta: { title: "地图", icon: "job", noCache: false, link: null },
+                    name: "map",
+                    path: "map"
+                  },
+                  {
+                    component: "Element/vr/index",
+                    hidden: false,
+                    meta: { title: "VR", icon: "druid", noCache: false, link: null },
+                    name: "vr",
+                    path: "vr"
+                  }
+                ],
+                meta: {
+                  icon: 'monitor',
+                  link: null,
+                  noCache: false,
+                  title: "组件工具",
+                },
+                name: 'Element',
+                path: "/Element",
                 redirect: 'noRedirect' 
               }
             ],
