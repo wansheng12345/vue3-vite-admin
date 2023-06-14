@@ -170,6 +170,20 @@ const usePermissionStore = defineStore(
                     meta: { title: "VR", icon: "druid", noCache: false, link: null },
                     name: "vr",
                     path: "vr"
+                  },
+                  {
+                    component: "Element/flow/index",
+                    hidden: false,
+                    meta: { title: "flow", icon: "druid", noCache: false, link: null },
+                    name: "flow",
+                    path: "flow"
+                  },
+                  {
+                    component: "Element/CityMap/index",
+                    hidden: false,
+                    meta: { title: "CityMap", icon: "druid", noCache: false, link: null },
+                    name: "CityMap",
+                    path: "CityMap"
                   }
                 ],
                 meta: {

@@ -10,7 +10,6 @@ import "photo-sphere-viewer/dist/photo-sphere-viewer.css"; // 引入样式
 import { MarkersPlugin } from "photo-sphere-viewer/dist/plugins/markers";
 import "photo-sphere-viewer/dist/plugins/markers.css";
 import imgUrl from "@/assets/images/1.jpg";
-console.log(imgUrl);
 const viewers = ref(null);
 function draw() {
   viewers.value = new Viewer({
@@ -47,7 +46,11 @@ function draw() {
           markers: [
             {
               id: "circle",
-              tooltip: "你看得到我？",
+              // tooltip: "你看得到我？",
+              tooltip:{
+                content: "你看得到我？",
+                position: "top center"
+              },
               circle: 20,
               svgStyle: {
                 fill: "rgba(255,255,0,0.3)",
@@ -63,6 +66,11 @@ function draw() {
       ],
     ],
   });
+  let mark=viewers.value.getPlugin(MarkersPlugin)
+  console.log(mark);
+  mark.on("select-marker",(e,mark)=>{
+    console.log(e,mark);
+  })
 }
 onMounted(() => {
   draw();

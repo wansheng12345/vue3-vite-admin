@@ -1,7 +1,15 @@
 <template>
   <div class="user-info-head" @click="editCropper()">
     <img :src="options.img" title="点击上传头像" class="img-circle img-lg" />
-    <el-dialog :title="title" v-model="open" width="800px" append-to-body @opened="modalOpened" @close="closeDialog">
+    <el-dialog
+      draggable
+      :title="title"
+      v-model="open"
+      width="800px"
+      append-to-body
+      @opened="modalOpened"
+      @close="closeDialog"
+    >
       <el-row>
         <el-col :xs="24" :md="12" :style="{ height: '350px' }">
           <vue-cropper
@@ -79,7 +87,7 @@ const options = reactive({
   autoCropHeight: 200, // 默认生成截图框高度
   fixedBox: true, // 固定截图框大小 不允许改变
   outputType: "png", // 默认生成截图为PNG格式
-  previews: {} //预览数据
+  previews: {}, //预览数据
 });
 
 /** 编辑头像 */
@@ -119,16 +127,16 @@ function beforeUpload(file) {
 }
 /** 上传图片 */
 function uploadImg() {
-  proxy.$refs.cropper.getCropBlob(data => {
+  proxy.$refs.cropper.getCropBlob((data) => {
     let formData = new FormData();
-    formData.append("avatarfile", data);
-    uploadAvatar(formData).then(response => {
-      open.value = false;
-      options.img = response.imgUrl;
-      userStore.avatar = options.img;
-      proxy.$modal.msgSuccess("修改成功");
-      visible.value = false;
-    });
+    formData.append("file", data);
+    // uploadAvatar(formData).then(response => {
+    open.value = false;
+    //   options.img = response.imgUrl;
+    //   userStore.avatar = options.img;
+    proxy.$modal.msgSuccess("修改成功");
+    visible.value = false;
+    // });
   });
 }
 /** 实时预览 */
@@ -137,12 +145,12 @@ function realTime(data) {
 }
 /** 关闭窗口 */
 function closeDialog() {
-  options.img = userStore.avatar;
+  // options.img = userStore.avatar;
   options.visible = false;
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .user-info-head {
   position: relative;
   display: inline-block;
