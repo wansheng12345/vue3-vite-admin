@@ -1,19 +1,9 @@
-## 前端运行
-
-```bash
-# 安装依赖
-npm install
-
-# 启动服务
-npm run dev
-
-# 构建测试环境 npm run build:stage
-# 构建生产环境 npm run build:prod
-# 前端访问地址 http://localhost:80
-```
-
-## 系统模块
-
-~~~
-vite + vue3
-~~~
+<!-- ## js小技巧 -->
+forEach 跳出循环 try catch 或者 splice
+let list = [1,2,3,4,5]
+list.forEach((item,i,arr)=>{
+    console.log(item)
+    if(item==3){
+        arr.splice(i)
+    }
+})

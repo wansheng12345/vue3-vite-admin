@@ -35,6 +35,19 @@
           <size-select id="size-select" class="right-menu-item hover-effect" />
         </el-tooltip>
       </template>
+      <div class="lang">
+        <el-dropdown @command="handleLang">
+          <span class="el-dropdown-link">
+            <img src="@/assets/icons/svg/language.svg" alt="">
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item :disabled="Public.lang=='zh'" command="zh">中文</el-dropdown-item>
+              <el-dropdown-item :disabled="Public.lang=='en'" command="en">English</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
       <div class="avatar-container">
         <el-dropdown
           @command="handleCommand"
@@ -77,7 +90,9 @@ import RuoYiDoc from "@/components/RuoYi/Doc";
 import useAppStore from "@/store/modules/app";
 import useUserStore from "@/store/modules/user";
 import useSettingsStore from "@/store/modules/settings";
-
+import usePublicStore from "@/store/modules/public";
+import usePermissionStore from '@/store/modules/permission'
+const Public = usePublicStore();
 const appStore = useAppStore();
 const userStore = useUserStore();
 const settingsStore = useSettingsStore();
@@ -98,7 +113,11 @@ function handleCommand(command) {
       break;
   }
 }
-
+function handleLang(command){
+  Public.lang=command;
+  usePermissionStore().changeRoutes(command)
+  localStorage.setItem('lang', command)
+}
 function logout() {
   ElMessageBox.confirm("确定注销并退出系统吗？", "提示", {
     confirmButtonText: "确定",
@@ -184,7 +203,14 @@ function setLayout() {
         }
       }
     }
-
+    .lang{
+      padding-top: 12px;
+      margin-right: 5px;
+      img{
+        width:22px;
+        height:22px;
+      }
+    }
     .avatar-container {
       margin-right: 40px;
 
