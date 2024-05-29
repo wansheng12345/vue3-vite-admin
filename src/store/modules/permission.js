@@ -305,7 +305,6 @@ const usePermissionStore = defineStore(
 										name: "markdown",
 										path: "markdown"
 									},
-
 									{
 										component: 'Element/Editor/index',
 										hidden: false,
@@ -318,6 +317,19 @@ const usePermissionStore = defineStore(
 										},
 										name: 'Editor',
 										path: 'Editor'
+									},
+									{
+										component: 'Element/IntersectionObserver/index',
+										hidden: false,
+										meta: {
+											title: '图片懒加载',
+											enTitle: 'Observer',
+											icon: 'druid',
+											noCache: false,
+											link: null,
+										},
+										name: '图片懒加载',
+										path: 'Observer'
 									}
 								],
 								meta: {

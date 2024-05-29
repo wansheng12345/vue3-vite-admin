@@ -102,11 +102,11 @@
 		span {
 			background: linear-gradient(to right, #ec695c, #61c454) no-repeat right bottom;
 			background-size: 0 2px;
-			transition: background-size 800ms;
+			transition: background-size 500ms;
 
 			&:hover {
 				background-position-x: left;
-				background-size: 100% 2px;
+				background-size: 100% 3px;
 			}
 		}
 	}
@@ -126,7 +126,7 @@
 				content: "";
 				position: absolute;
 				width: 98%;
-				height: 2px;
+				height: 3px;
 				bottom: 0;
 				left: 0;
 				transform: scaleX(0);
@@ -153,15 +153,51 @@
 				flex: 1;
 				border-radius: 10px;
 				margin: 0 10px;
-				filter: grayscale(0);
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: auto 100%;
 				transition: all .3s cubic-bezier(.25, .4, .45, 1.4);
 				position: relative;
 				cursor: pointer;
-				background-image: url('@/assets/images/3.jpg');
 				overflow: hidden;
+
+				&:before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-image: url('@/assets/images/3.jpg');
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: auto 100%;
+					filter: grayscale(1);
+				}
+
+
+				&:hover {
+					&::before {
+						filter: grayscale(0);
+					}
+
+					.content {
+						padding: 30px 0;
+						transform: translateY(200px);
+					}
+				}
+
+				&:nth-child(2):before {
+					background-image: url('@/assets/images/4.jpg');
+				}
+
+				&:nth-child(3):before {
+					background-image: url('@/assets/images/5.jpg');
+				}
+
+				&:nth-child(4):before {
+					background-image: url('@/assets/images/6.jpg');
+				}
+
+				&:nth-child(5):before {
+					background-image: url('@/assets/images/7.jpg');
+				}
 
 				.content {
 					text-align: center;
@@ -196,40 +232,6 @@
 						padding: 0 20px;
 						cursor: pointer;
 					}
-				}
-
-				&:hover {
-
-					filter: grayscale(1);
-
-					// flex: 1.5;
-
-					.content {
-						padding: 30px 0;
-						transform: translateY(200px);
-						background: #3333335c;
-						box-shadow: 0 0 5px 5px #3333335c;
-
-						p {
-							background: #3336;
-						}
-					}
-				}
-
-				&:nth-child(2) {
-					background-image: url('@/assets/images/4.jpg');
-				}
-
-				&:nth-child(3) {
-					background-image: url('@/assets/images/5.jpg');
-				}
-
-				&:nth-child(4) {
-					background-image: url('@/assets/images/6.jpg');
-				}
-
-				&:nth-child(5) {
-					background-image: url('@/assets/images/7.jpg');
 				}
 			}
 		}

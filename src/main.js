@@ -27,7 +27,8 @@ import Prism from 'prismjs';
 import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/SvgIcon'
 import elementIcons from '@/components/SvgIcon/svgicon'
-
+import '@imengyu/vue3-context-menu/lib/vue3-context-menu.css'
+import ContextMenu from '@imengyu/vue3-context-menu'
 import './permission' // permission control
 VueMarkdownEditor.use(vuepressTheme, {
 	Prism,
@@ -84,6 +85,7 @@ app.use(store)
 app.use(plugins)
 app.use(elementIcons)
 app.use(VueMarkdownEditor)
+app.use(ContextMenu)
 app.component('svg-icon', SvgIcon)
 
 directive(app)

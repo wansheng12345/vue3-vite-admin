@@ -1,9 +1,13 @@
 import hasRole from './permission/hasRole'
 import hasPermi from './permission/hasPermi'
 import copyText from './common/copyText'
+import slideIn from './slide-in'
+import LazyImg from './lazyLoad'
 
-export default function directive(app){
-  app.directive('hasRole', hasRole)
-  app.directive('hasPermi', hasPermi)
-  app.directive('copyText', copyText)
+export default function directive(app) {
+	app.directive('hasRole', hasRole)
+	app.directive('hasPermi', hasPermi)
+	app.directive('copyText', copyText)
+	app.directive('slide-in', slideIn)
+	app.directive('lazy-img', LazyImg)
 }

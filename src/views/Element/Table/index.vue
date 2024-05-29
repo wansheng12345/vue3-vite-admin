@@ -11,6 +11,13 @@
 		</el-table>
 		<hr>
 		<el-button type="primary" @click="open">汲取 {{sRGBHex}}</el-button>
+		<br>
+		<el-table :data="tableData" ref="tableRef" @row-click="handleRowClick" border highlight-current-row>
+			<el-table-column v-for="item in tableColumn" :key="item.prop" show-overflow-tooltip align="center"
+				:prop="item.prop" :label="item.label" min-width="180" />
+		</el-table>
+		<el-button type="info" @click="clearIndex">清空</el-button>
+		<el-button type="warning" @click="setClick">设置第一行</el-button>
 	</div>
 </template>
 
@@ -146,6 +153,19 @@
 		getSpanArr(tableData.value)
 	}
 	getList()
+	const tableRef = ref(null)
+
+	function handleRowClick(row, index) {
+		console.log(row, index);
+	}
+
+	function clearIndex() {
+		tableRef.value.setCurrentRow()
+	}
+
+	function setClick() {
+		tableRef.value.setCurrentRow(tableData.value[0])
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -153,5 +173,11 @@
 		width: 100%;
 		height: 100%;
 		padding: 10px 20px;
+	}
+</style>
+<style lang="scss">
+	.el-table__body tr.current-row>td {
+		background-color: var(--el-color-primary) !important;
+		color: #f5f5f5;
 	}
 </style>

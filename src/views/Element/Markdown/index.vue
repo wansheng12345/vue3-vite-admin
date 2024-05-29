@@ -13,7 +13,7 @@
 	const text = ref('')
 	const toolbar = ref(
 		'undo redo clear | tip  | h bold italic strikethrough quote | ul ol table hr | link image code | save')
-	const mode = ref('preview')
+	const mode = ref('editable')
 
 	function handleClick() {
 		if (mode.value == 'preview') {
