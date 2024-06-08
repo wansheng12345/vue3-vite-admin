@@ -4,6 +4,9 @@ import createVitePlugins from './vite/plugins'
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd())
   return {
+    define: {
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__:'true'
+    },
     base: './',
     plugins: createVitePlugins(env, command === 'build'),
     resolve: {
