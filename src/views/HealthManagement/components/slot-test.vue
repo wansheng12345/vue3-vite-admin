@@ -11,8 +11,7 @@
 </template>
 
 <script setup>
-	const str = inject('test')
-	console.log(str);
+	const str = inject('num')
 	const obj = ref('子组件动态文字')
 
 	function handleClick() {

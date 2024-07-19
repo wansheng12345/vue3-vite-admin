@@ -7,9 +7,11 @@
 	import {
 		handleThemeStyle
 	} from '@/utils/theme'
-	provide('test', {
-		str: 'provide 传递的字符串'
-	})
+	const num = ref(0)
+	setInterval(() => {
+		num.value += 1
+	}, 5000)
+	provide('num', num)
 	onMounted(() => {
 		nextTick(() => {
 			handleThemeStyle(useSettingsStore().theme)

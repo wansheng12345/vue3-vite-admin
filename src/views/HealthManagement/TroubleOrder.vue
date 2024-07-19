@@ -72,6 +72,11 @@
 		fn
 	} = useContextMenu();
 
+	const injectStr = inject('num')
+	watchEffect(() => {
+		console.log(injectStr.value)
+	})
+
 	function onContextMenu(e, str) {
 		e.preventDefault();
 		fn(e)

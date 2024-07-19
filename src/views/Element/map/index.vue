@@ -1,162 +1,56 @@
+<!-- Index.vue -->
+
 <template>
-  <div class="map-china-page">
-    <div id="map"></div>
+  <div class="map">
+    <div class="container">
+      <div class="item" ref="cardRef1"></div>
+      <div class="item" ref="cardRef2"></div>
+      <div class="item" ref="cardRef3"></div>
+      <div class="item" ref="cardRef4"></div>
+    </div>
   </div>
 </template>
+
 <script setup>
-import china from "@/assets/json/map.json";
-const { proxy } = getCurrentInstance();
-const map = ref(null);
-function draw() {
-  // 指定图表的配置项和数据
-  var option = {
-    backgroundColor: "",
-    title: {
-      text: "中国地图",
-      x: "center",
-      y: "top",
-    },
-    tooltip: {
-      show: true,
-      backgroundColor: "rgba(32, 33, 36,.7)",
-      borderColor: "rgba(32, 33, 36,0.20)",
-      borderWidth: 1,
-      textStyle: {
-        // 文字提示样式
-        color: "#fff",
-        fontSize: "12",
-      },
-    },
-    geo: {
-      map: "china",
-      zoom: 1.28,
-      roam: true, // 缩放和拖拽
-      center: [105, 36], // 调整地图位置
-      itemStyle: {
-        areaColor: "#0d0059",
-        borderColor: "#389dff",
-        borderWidth: 1, //设置外层边框
-        // shadowBlur:4,
-        // shadowOffsetY: 6,
-        // shadowOffsetX: 0,
-        // shadowColor: "#01012a",
-      },
-      emphasis: {
-        label: {
-          show: true,
-          color: "#fff",
-        },
-        itemStyle: {
-          areaColor: "#184cff",
-          shadowOffsetX: 0,
-          shadowOffsetY: 0,
-          shadowBlur: 5,
-          borderWidth: 0,
-          shadowColor: "rgba(0, 0, 0, 0.5)",
-        },
-      },
-    },
-    series: [
-      {
-        // 数据前5名的点
-        name: "Top 5",
-        type: "effectScatter",
-        coordinateSystem: "geo",
-        data: [
-          {
-            name: "内蒙古自治区", // 对应地图中的name
-            value: [114.077429, 44.331087], // value值,前面两个是X轴,Y轴坐标, 后面的数据自定义,可以设置多个
-          },
-        ],
-        encode: {
-          value: 2,
-        },
-        symbolSize: function (val) {
-          return 6; //设置散点的大小，可想现在这样根据数据大小改散点的大小，也可设置成统一的固定值
-        },
-        showEffectOn: "render",
-        rippleEffect: {
-          brushType: "stroke",
-          period: 10, //周期
-          scale: 10, //规模
-        },
-        hoverAnimation: true,
-        label: {
-          formatter: "{b}",
-          position: "right",
-          show: true,
-        },
-        itemStyle: {
-          color: "#f13434",
-          shadowBlur: 15,
-          shadowColor: "#333",
-        },
-        zlevel: 1,
-      },
-      {
-        // 数据前5名的点
-        name: "Top 4",
-        type: "effectScatter",
-        coordinateSystem: "geo",
-        data: [
-          {
-            name: "武汉市", // 对应地图中的name
-            value: [112.271301, 30.987527], // value值,前面两个是X轴,Y轴坐标, 后面的数据自定义,可以设置多个
-          },
-        ],
-        encode: {
-          value: 2,
-        },
-        symbolSize: function (val) {
-          return 6; //设置散点的大小，可想现在这样根据数据大小改散点的大小，也可设置成统一的固定值
-        },
-        showEffectOn: "render",
-        rippleEffect: {
-          brushType: "stroke",
-          period: 10, //周期
-          scale: 10, //规模
-        },
-        hoverAnimation: true,
-        label: {
-          formatter: "{b}",
-          position: "right",
-          show: true,
-        },
-        itemStyle: {
-          color: "#f13434",
-          shadowBlur: 6,
-          shadowColor: "#333",
-        },
-        zlevel: 1,
-      },
-    ],
-  };
-  // 使用刚指定的配置项和数据显示图表。
-  map.value.setOption(option);
-}
-onMounted(() => {
-  nextTick(() => {
-    proxy.$echarts.registerMap("china", china);
-    map.value = markRaw(
-      proxy.$echarts.init(document.getElementById("map"), "dark", { renderer: "svg" })
-    );
-    draw();
-  });
+import { useLightCard } from "@/hooks/use-light-card";
+const { cardRef: cardRef1 } = useLightCard();
+const { cardRef: cardRef2 } = useLightCard({
+  light: {
+    color: "#ffffff",
+    width: 100,
+  },
+});
+const { cardRef: cardRef3 } = useLightCard({
+  light: {
+    color: "yellow",
+  },
+});
+const { cardRef: cardRef4 } = useLightCard({
+  light: {
+    color: "green",
+    width: 100,
+  },
 });
 </script>
-<style lang="scss" scoped>
-.map-china-page {
+
+<style scoped lang="scss">
+.map {
   width: 100%;
   height: 100%;
-  padding: 5px;
-  // background: #273267;
-  background: url("@/assets/images/form.png") center no-repeat;
-  box-sizing: border-box;
-  color: #f5f5f5;
-  position: relative;
-  #map {
-    width: 1200px;
-    height: 700px;
+  background: black;
+}
+.container {
+  width: 100%;
+  padding: 50px 150px;
+  display: flex;
+  justify-content: space-between;
+
+  .item {
+    position: relative;
+    width: 165px;
+    height: 165px;
+    background: #1c1c1f;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 </style>
