@@ -44,7 +44,7 @@
 					</div>
 				</div>
 			</section>
-			<context-menu v-model:show="show" :options="optionsComponent">
+			<!-- <context-menu v-model:show="show" :options="optionsComponent">
 				<context-menu-item label="Simple item" @click="onMenuClick(1)">
 					<template #icon>
 						<img src="https://imengyu.top/assets/images/test/icon.png" style="width:20px;height:20px" />
@@ -57,7 +57,7 @@
 						<context-menu-item v-for="index of 3" :key="index" :label="'Item3-'+index" />
 					</context-menu-group>
 				</context-menu-group>
-			</context-menu>
+			</context-menu> -->
 		</div>
 	</div>
 </template>
@@ -211,7 +211,7 @@
 
 					for (let j = 0; j < left.length; j++) {
 						left[j].style.width = moveLen + 'px';
-						right[j].style.width = (box[i].clientWidth - moveLen - 10) + 'px';
+						right[j].style.width = (box[i].clientWidth - moveLen - 40) + 'px';
 					}
 				};
 				// 鼠标松开事件
@@ -275,10 +275,9 @@
 			z-index: 1;
 			top: 50%;
 			transform: translateY(-50%);
-			left: -13px;
+			left:0px;
 			background-color: #d6d6d6;
 			border-radius: 5px;
-			margin-top: -10px;
 			width: 10px;
 			height: 50px;
 			display: flex;
