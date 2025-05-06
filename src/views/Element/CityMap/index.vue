@@ -5,7 +5,22 @@
 </template>
 
 <script setup>
-	import china from "@/assets/json/map.json";
+	import axios from "axios";
+	const chinaJson = ref(null)
+	axios.get('https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=100000_full').then(res => {
+		console.log(res.data);
+		chinaJson.value = res.data;
+		if (!chinaJson.value) return
+		nextTick(() => {
+			// proxy.$echarts.registerMap("china", chinaJson.value);
+			// map.value = markRaw(
+			// 	proxy.$echarts.init(document.getElementById("map"), "", {
+			// 		renderer: "svg"
+			// 	})
+			// );
+			draw();
+		})
+	})
 	const {
 		proxy
 	} = getCurrentInstance();
@@ -137,20 +152,14 @@
 		})
 	}
 	onMounted(() => {
-		proxy.$echarts.registerMap("china", china);
-		map.value = markRaw(
-			proxy.$echarts.init(document.getElementById("map"), "", {
-				renderer: "svg"
-			})
-		);
-		draw();
+
 	});
 </script>
 <style lang="scss" scoped>
 	.CityMap-page {
 		width: 100%;
 		height: 100%;
-		background: #484545;
+		background: #111;
 		background-size: cover;
 
 		#map {

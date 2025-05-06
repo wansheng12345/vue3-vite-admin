@@ -293,6 +293,19 @@ const usePermissionStore = defineStore(
 										path: "Drag"
 									},
 									{
+										component: "Element/echart/index",
+										hidden: false,
+										meta: {
+											title: "测试",
+											enTitle: 'Drag',
+											icon: "druid",
+											noCache: false,
+											link: null
+										},
+										name: "echart",
+										path: "echart"
+									},
+									{
 										component: 'Element/Markdown/index',
 										hidden: false,
 										meta: {

@@ -1,15 +1,9 @@
 <template>
-	<div class="text-page">
-		<h1>1111</h1>
+	<div>
+
 	</div>
 </template>
-
 <script setup>
 </script>
-
 <style lang="scss" scoped>
-	.text-page {
-		width: 100%;
-		height: 100%;
-	}
 </style>
