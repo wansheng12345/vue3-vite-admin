@@ -18,7 +18,6 @@ import {
 	saveAs
 } from 'file-saver'
 import useUserStore from '@/store/modules/user'
-// import i18n from '@/i18n/index';
 let downloadLoadingInstance;
 // 是否显示重新登录
 // 创建axios实例
@@ -144,32 +143,33 @@ service.interceptors.response.use(res => {
 )
 
 // 通用下载方法
-export function download(url, params, filename, method = 'post', header, ) {
+export async function download(url, params, filename, method = 'post', ) {
 	downloadLoadingInstance = ElLoading.service({
-		text: "111",
-		background: "rgba(0, 0, 0, 0.7)",
-	})
-	return service[method](url, params, {
-		responseType: 'blob',
-	}).then(async (data) => {
+		text: '正在下载中',
+		background: 'rgba(0, 0, 0, 0.7)',
+	});
+	try {
+		const config = {
+			responseType: 'blob'
+		};
+		const data = await service[method](url, params, config);
 		const isBlob = blobValidate(data);
 		if (isBlob) {
 			const blob = new Blob([data], {
 				type: 'application/json;charset=utf-8'
-			})
-			saveAs(blob, filename)
+			});
+			saveAs(blob, filename);
 		} else {
 			const resText = await data.text();
 			const rspObj = JSON.parse(resText);
-			const errMsg = rspObj.msg || rspObj.message || errorCode['default']
+			const errMsg = rspObj.msg || rspObj.message || errorCode['default'];
 			ElMessage.error(errMsg);
 		}
+	} catch (error) {
+		ElMessage.error('下载失败');
+	} finally {
 		downloadLoadingInstance.close();
-	}).catch((r) => {
-		console.error(r)
-		ElMessage.error(r)
-		downloadLoadingInstance.close();
-	})
+	}
 }
 
 export default service

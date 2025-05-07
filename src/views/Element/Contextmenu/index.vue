@@ -81,41 +81,41 @@
 		e.preventDefault();
 		fn(e)
 		// console.log(str); // contextmenu.showContextMenu
-		// proxy.$contextmenu({
-		// 	theme: 'win10 dark',
-		// 	items: [{
-		// 			label: "菜单1",
-		// 			icon: h('img', {
-		// 				src: 'https://imengyu.top/assets/images/test/icon.png',
-		// 				style: {
-		// 					width: '18px',
-		// 					height: '18px',
-		// 				}
-		// 			}),
-		// 			onClick: () => {
-		// 				console.log(111, '传递的参数是' + str);
-		// 			}
-		// 		},
-		// 		{
-		// 			label: "菜单2",
-		// 			children: [{
-		// 					label: "菜单2-1",
-		// 					icon: 'Edit'
-		// 				},
-		// 				{
-		// 					label: "菜单2-2"
-		// 				},
-		// 				{
-		// 					label: "菜单2-3"
-		// 				},
-		// 			]
-		// 		},
-		// 	],
-		// 	x: e.x,
-		// 	y: e.y,
-		// 	customClass: "class-a", // 自定义公共的class
-		// 	iconFontClass: '',
-		// });
+		proxy.$contextmenu({
+			theme: 'win10 dark',
+			items: [{
+					label: "菜单1",
+					icon: h('img', {
+						src: 'https://imengyu.top/assets/images/test/icon.png',
+						style: {
+							width: '18px',
+							height: '18px',
+						}
+					}),
+					onClick: () => {
+						console.log(111, '传递的参数是' + str);
+					}
+				},
+				{
+					label: "菜单2",
+					children: [{
+							label: "菜单2-1",
+							icon: 'Edit'
+						},
+						{
+							label: "菜单2-2"
+						},
+						{
+							label: "菜单2-3"
+						},
+					]
+				},
+			],
+			x: e.x,
+			y: e.y,
+			customClass: "class-a", // 自定义公共的class
+			iconFontClass: '',
+		});
 	}
 	// 组件式调用右键菜单
 	const show = ref(false);
@@ -275,7 +275,7 @@
 			z-index: 1;
 			top: 50%;
 			transform: translateY(-50%);
-			left:0px;
+			left: 0px;
 			background-color: #d6d6d6;
 			border-radius: 5px;
 			width: 10px;

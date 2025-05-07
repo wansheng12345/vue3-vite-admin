@@ -160,61 +160,6 @@ const usePermissionStore = defineStore(
 								component: "Layout",
 								hidden: false,
 								children: [{
-										component: "HealthManagement/HighFrequency",
-										hidden: false,
-										meta: {
-											title: "高频故障闭环",
-											enTitle: 'HighFrequency',
-											icon: "job",
-											noCache: false,
-											link: null
-										},
-										name: "HighFrequency",
-										path: "HighFrequency"
-									},
-									{
-										component: "HealthManagement/TroubleOrder",
-										hidden: false,
-										meta: {
-											title: "故障工单",
-											enTitle: 'TroubleOrder',
-											icon: "druid",
-											noCache: false,
-											link: null
-										},
-										name: "TroubleOrder",
-										path: "TroubleOrder"
-									},
-									{
-										component: "HealthManagement/Operation-manual",
-										hidden: false,
-										meta: {
-											title: "操作手册",
-											enTitle: 'Operation-manual',
-											icon: "druid",
-											noCache: false,
-											link: null
-										},
-										name: "Operation-manual",
-										path: "Operation-manual"
-									},
-								],
-								meta: {
-									icon: 'monitor',
-									link: null,
-									noCache: false,
-									title: "设备健康度管理",
-									enTitle: 'HealthManagement',
-								},
-								name: 'HealthManagement',
-								path: "/HealthManagement",
-								redirect: 'noRedirect'
-							},
-							{
-								alwaysShow: true,
-								component: "Layout",
-								hidden: false,
-								children: [{
 										component: "Element/map/index",
 										hidden: false,
 										meta: {
@@ -254,30 +199,17 @@ const usePermissionStore = defineStore(
 										path: "flow"
 									},
 									{
-										component: "Element/CityMap/index",
+										component: "Element/Quill/index",
 										hidden: false,
 										meta: {
-											title: "CityMap",
-											enTitle: 'CityMap',
+											title: "Quill",
+											enTitle: 'Quill',
 											icon: "druid",
 											noCache: false,
 											link: null
 										},
-										name: "CityMap",
-										path: "CityMap"
-									},
-									{
-										component: "Element/Table/index",
-										hidden: false,
-										meta: {
-											title: "表格",
-											enTitle: 'Table',
-											icon: "druid",
-											noCache: false,
-											link: null
-										},
-										name: "Table",
-										path: "Table"
+										name: "Quill",
+										path: "Quill"
 									},
 									{
 										component: "Element/drag/index",
@@ -293,7 +225,7 @@ const usePermissionStore = defineStore(
 										path: "Drag"
 									},
 									{
-										component: "Element/echart/index",
+										component: "Element/Test/index",
 										hidden: false,
 										meta: {
 											title: "测试",
@@ -302,34 +234,8 @@ const usePermissionStore = defineStore(
 											noCache: false,
 											link: null
 										},
-										name: "echart",
-										path: "echart"
-									},
-									{
-										component: 'Element/Markdown/index',
-										hidden: false,
-										meta: {
-											title: 'markdown',
-											enTitle: 'Markdown',
-											icon: "druid",
-											noCache: false,
-											link: null
-										},
-										name: "markdown",
-										path: "markdown"
-									},
-									{
-										component: 'Element/Editor/index',
-										hidden: false,
-										meta: {
-											title: 'Editor',
-											enTitle: 'Editor',
-											icon: 'druid',
-											noCache: false,
-											link: null,
-										},
-										name: 'Editor',
-										path: 'Editor'
+										name: "Test",
+										path: "Test"
 									},
 									{
 										component: 'Element/IntersectionObserver/index',
